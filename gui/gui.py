@@ -47,5 +47,5 @@ class MyGUI(QMainWindow):
         # Replace this with your actual function logic
         print(f"Item clicked: {selected_item}")
         scan_video_for_timestamp(selected_item)
-        self.label.setPixmap(QtGui.QPixmap(".\\main\\exported_frame.jpg"))
+        self.label.setPixmap(QtGui.QPixmap(".\\exported_frame.jpg"))
         

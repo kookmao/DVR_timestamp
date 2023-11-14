@@ -32,10 +32,16 @@ def text_to_time(input_str):
 
 
 def export_frame_from_video(input_path, start_time):
-    ffmpeg.input(input_path, ss=start_time).output("exported_frame.jpg", vframes=1, v=0).run(
-        overwrite_output=True
-    )
-    # ffmpeg.input(input, ss=0).output(export, vframes=1).run(overwrite_output=True)
+    try:
+        ffmpeg.input(input_path, ss=start_time).output(
+            "exported_frame.jpg", vframes=1, v=0
+        ).run(overwrite_output=True)
+        # ffmpeg.input(input, ss=0).output(export, vframes=1).run(overwrite_output=True)
+
+        return ".\\exported_frame.jpg"
+    except ffmpeg.Error as e:
+        print("Error:", e.stderr)
+        return None
 
 
 def extract_timestamp(input, percent):
