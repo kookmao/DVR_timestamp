@@ -45,6 +45,11 @@ def export_frame_from_video(input_path, start_time):
 
 
 def extract_timestamp(input, percent):
+    """
+    description: extract a text from an image
+    return: extracted text
+    
+    """
     img = Image.open(input)
 
     # Use UI coordinates to crop the image
@@ -76,23 +81,27 @@ def extract_timestamp(input, percent):
 
     print("extract_timestamp: Extracted Text: \n", extracted_text)
 
-    return extracted_text
+    return text_to_time(extracted_text)
 
 
-# seek date from an image
 def scan_video_for_timestamp(input_video_path):
+    """
+    seek date from an image
+    return formatted string of a date (together)
+
+    """
     formatted_text = None
     i = 0
     seek_interval = 5
     cap_ss = 50
-    # iterate with 5 second intervals until
+    # iterate with 5 second intervals until there's a date
     while formatted_text is None and i < cap_ss:
         exported_frame_path = export_frame_from_video(input_video_path, i)
         i = +seek_interval
-        extracted_text = extract_timestamp(exported_frame_path, 0.1)
-        formatted_text = text_to_time(extracted_text)
+        formatted_text = extract_timestamp(exported_frame_path, 0.1)
 
     if i < 50:
+        print(f"formatted text: {formatted_text}")
         return str(formatted_text)
 
     return None
