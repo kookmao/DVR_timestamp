@@ -12,8 +12,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>659</width>
-    <height>680</height>
+    <width>1088</width>
+    <height>655</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -23,7 +23,11 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>DVR timestamp</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon-icx-logo.png</normaloff>icon-icx-logo.png</iconset>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -43,6 +47,9 @@
   <property name="tabShape">
    <enum>QTabWidget::Rounded</enum>
   </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="enabled">
     <bool>true</bool>
@@ -56,13 +63,16 @@
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
-   <widget class="QSplitter" name="control">
+   <widget class="QListView" name="imported_files">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>5</x>
-      <y>369</y>
-      <width>640</width>
-      <height>270</height>
+      <x>15</x>
+      <y>15</y>
+      <width>205</width>
+      <height>571</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -73,280 +83,186 @@
     </property>
     <property name="minimumSize">
      <size>
-      <width>640</width>
-      <height>270</height>
+      <width>100</width>
+      <height>205</height>
      </size>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>1600</width>
+      <height>1600</height>
+     </size>
+    </property>
+    <property name="acceptDrops">
+     <bool>true</bool>
+    </property>
     <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
+     <enum>QFrame::Box</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Sunken</enum>
     </property>
-    <property name="midLineWidth">
-     <number>1</number>
+    <property name="dragEnabled">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="start_button">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>600</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>100</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="statusTip">
+     <string>start processing</string>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>226</x>
+      <y>15</y>
+      <width>854</width>
+      <height>480</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>640</width>
+      <height>360</height>
+     </size>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>default.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="buddy">
+     <cstring></cstring>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="undo_button">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>540</y>
+      <width>50</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reset</string>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="progress_bar">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>225</x>
+      <y>495</y>
+      <width>854</width>
+      <height>4</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="textVisible">
+     <bool>false</bool>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
-    <property name="opaqueResize">
-     <bool>true</bool>
+    <property name="invertedAppearance">
+     <bool>false</bool>
     </property>
-    <property name="childrenCollapsible">
-     <bool>true</bool>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>510</y>
+      <width>286</width>
+      <height>91</height>
+     </rect>
     </property>
-    <widget class="QSplitter" name="date_box">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+    <layout class="QGridLayout" name="gridLayout" rowstretch="0,0" columnstretch="0,0,0">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
      </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
+     <property name="leftMargin">
+      <number>5</number>
      </property>
-     <property name="frameShadow">
-      <enum>QFrame::Sunken</enum>
+     <property name="topMargin">
+      <number>5</number>
      </property>
-     <property name="lineWidth">
-      <number>1</number>
+     <property name="rightMargin">
+      <number>5</number>
      </property>
-     <property name="midLineWidth">
-      <number>1</number>
+     <property name="bottomMargin">
+      <number>5</number>
      </property>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+     <property name="spacing">
+      <number>5</number>
      </property>
-     <widget class="QWidget" name="layoutWidget">
-      <layout class="QGridLayout" name="gridLayout">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetMinAndMaxSize</enum>
-       </property>
-       <property name="leftMargin">
-        <number>10</number>
-       </property>
-       <property name="topMargin">
-        <number>10</number>
-       </property>
-       <property name="rightMargin">
-        <number>10</number>
-       </property>
-       <property name="bottomMargin">
-        <number>10</number>
-       </property>
-       <property name="spacing">
-        <number>10</number>
-       </property>
-       <item row="0" column="1">
-        <widget class="QDateEdit" name="system_date">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="statusTip">
-          <string>system date</string>
-         </property>
-         <property name="currentSection">
-          <enum>QDateTimeEdit::DaySection</enum>
-         </property>
-         <property name="displayFormat">
-          <string>d/M/yyyy</string>
-         </property>
-         <property name="calendarPopup">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QTimeEdit" name="actual_time">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="statusTip">
-          <string>actual time</string>
-         </property>
-         <property name="displayFormat">
-          <string>hh:mm:ss</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QDateEdit" name="actual_date">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="statusTip">
-          <string>actual date</string>
-         </property>
-         <property name="currentSection">
-          <enum>QDateTimeEdit::DaySection</enum>
-         </property>
-         <property name="displayFormat">
-          <string>d/M/yyyy</string>
-         </property>
-         <property name="calendarPopup">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QTimeEdit" name="system_time">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="statusTip">
-          <string>system time</string>
-         </property>
-         <property name="displayFormat">
-          <string>hh:mm:ss</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="apply_button">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>100</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="statusTip">
-          <string>apply actual time</string>
-         </property>
-         <property name="text">
-          <string>Apply</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QPushButton" name="scan_button">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>100</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="statusTip">
-          <string>scan date &amp; time</string>
-         </property>
-         <property name="text">
-          <string>Scan</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QFrame" name="frame">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="autoFillBackground">
-       <bool>true</bool>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <property name="lineWidth">
-       <number>0</number>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QSplitter" name="buttons_files">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <widget class="QListView" name="imported_files">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>100</width>
-        <height>205</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>205</width>
-        <height>500</height>
-       </size>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Sunken</enum>
-      </property>
-     </widget>
-     <widget class="QSplitter" name="buttons">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <widget class="QPushButton" name="import_button">
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>100</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="statusTip">
-        <string>import videos</string>
-       </property>
-       <property name="text">
-        <string>Import</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="start_button">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="scan_button">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -358,61 +274,191 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>100</width>
-         <height>30</height>
+         <width>50</width>
+         <height>22</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>100</width>
-         <height>30</height>
+         <width>50</width>
+         <height>22</height>
         </size>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="statusTip">
-        <string>start processing</string>
+        <string>scan date &amp; time</string>
        </property>
        <property name="text">
-        <string>Start</string>
+        <string>Scan</string>
+       </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
        </property>
       </widget>
-     </widget>
-    </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QDateEdit" name="system_date">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="statusTip">
+        <string>system date</string>
+       </property>
+       <property name="currentSection">
+        <enum>QDateTimeEdit::DaySection</enum>
+       </property>
+       <property name="displayFormat">
+        <string>d/M/yyyy</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QTimeEdit" name="system_time">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="statusTip">
+        <string>system time</string>
+       </property>
+       <property name="displayFormat">
+        <string>hh:mm:ss</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QDateEdit" name="actual_date">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="statusTip">
+        <string>actual date</string>
+       </property>
+       <property name="currentSection">
+        <enum>QDateTimeEdit::DaySection</enum>
+       </property>
+       <property name="displayFormat">
+        <string>d/M/yyyy</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QTimeEdit" name="actual_time">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="statusTip">
+        <string>actual time</string>
+       </property>
+       <property name="displayFormat">
+        <string>hh:mm:ss</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="apply_button">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="statusTip">
+        <string>apply actual time</string>
+       </property>
+       <property name="text">
+        <string>Apply</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QPushButton" name="import_button">
     <property name="geometry">
      <rect>
       <x>15</x>
-      <y>15</y>
-      <width>631</width>
-      <height>331</height>
+      <y>600</y>
+      <width>100</width>
+      <height>30</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>100</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="statusTip">
+     <string>import videos</string>
+    </property>
     <property name="text">
-     <string/>
+     <string>Import</string>
     </property>
-    <property name="pixmap">
-     <pixmap>default.png</pixmap>
-    </property>
-    <property name="scaledContents">
+    <property name="default">
      <bool>true</bool>
     </property>
-    <property name="buddy">
-     <cstring></cstring>
-    </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>659</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

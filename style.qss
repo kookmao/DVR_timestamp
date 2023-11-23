@@ -1,0 +1,51 @@
+QMainWindow{
+  background-color: #333;
+}
+
+QProgressBar::chunk{
+  background-color: red;
+}
+
+QDateEdit {
+  background-color: #fff;
+  color: #000000;
+ 
+}
+QTimeEdit {
+  background-color: #fff;
+  color: #ff000000;
+}
+QDateEdit:disabled {
+  background-color: #6affffff;
+}
+QTimeEdit:disabled {
+  background-color: #6affffff;
+}
+
+
+QPushButton {
+  background-color: #7e7e7e;
+  color: #fff;
+  border-radius: 4px;
+}
+QPushButton:disabled {
+  background-color: #3bd8d8d8;
+  color:#35ffffff;
+
+}
+QPushButton:hover,
+QPushButton:focus {
+  background-color: #8a8a8a;
+}
+QSplitter{
+  background-color: #ff2e2e2e;
+}
+QListView {
+  background-color: #ff303030;
+  border: 2px solid #b7b7b7;
+  border-radius:2px;
+  color:#fff;
+}
+QStatusBar {
+  color:#fff;
+}
